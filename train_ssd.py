@@ -210,7 +210,7 @@ def modified_smooth_l1(bbox_pred, bbox_targets, bbox_inside_weights=1., bbox_out
         SmoothL1(x) = 0.5 * (sigma * x)^2,    if |x| < 1 / sigma^2
                       |x| - 0.5 / sigma^2,    otherwise
     """
-    with tf.name_scope('smooth_l1', [bbox_pred, bbox_targets]):
+    with tf.name_scope('smooth_l1', values=[bbox_pred, bbox_targets]):
         sigma2 = sigma * sigma
 
         inside_mul = tf.multiply(bbox_inside_weights, tf.subtract(bbox_pred, bbox_targets))
